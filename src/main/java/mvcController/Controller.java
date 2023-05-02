@@ -45,12 +45,12 @@ public class Controller extends HttpServlet {
 		
 		String action = request.getParameter("action");
 		RequestDispatcher rd ;
-		if(action.contentEquals("addSubject"))
+		if(action.contentEquals("addBlog"))
 		{
 			
 			
 		}
-		if(action.contentEquals("listSubjects"))
+		if(action.contentEquals("ViewBlog"))
 		{
 			{
 				List<Blog> Blogs = new ArrayList<Blog>();

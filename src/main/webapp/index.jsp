@@ -8,9 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<a href="Controller?action=addSubject">Add Subject</a>
-<a href="Controller?action=listSubjects">View Subjects</a>
-
+	<a href="Controller?action=addBlog">add Blog</a>
+	<a href="Controller?action=ViewBlog">View Blog</a>
 </body>
 </html>
