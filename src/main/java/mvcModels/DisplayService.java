@@ -29,7 +29,7 @@ public class DisplayService {
     public List<Blog> getAllBlogs()
     {
     List<Blog> subjects = new ArrayList<Blog>();
-    TypedQuery<Blog> query = em.createNamedQuery("Subject.findAll",Blog.class);
+    TypedQuery<Blog> query = em.createNamedQuery("blog.findAll",Blog.class);
     subjects = query.getResultList();
     return subjects;
     }

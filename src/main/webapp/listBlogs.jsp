@@ -14,8 +14,10 @@ Liste des matières : <br/>
 <c:forEach var="sub" items="${requestScope.Blogs}">
 <c:out value="<li>${sub.Blog} : ${sub.Blog.blog_name}
 ${sub.Blog.description}" escapeXml="false"></c:out>
-<a href="Controller?action=deleteSubject&subId=${sub.subjectId}">
-Sppprimer</a></li> <br/>
+<a href="Controller?action=deleteSubject&subId=${sub.id}">
+Sppprimer
+</a>
+</li> <br/>
 </c:forEach>
 </ul>
 </body>

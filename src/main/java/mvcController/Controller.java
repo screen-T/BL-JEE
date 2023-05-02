@@ -56,7 +56,7 @@ public class Controller extends HttpServlet {
 				List<Blog> Blogs = new ArrayList<Blog>();
 				Blogs = subjectService.getAllBlogs();
 				request.setAttribute("Blogs", Blogs);
-				rd = request.getRequestDispatcher("listSubjects.jsp");
+				rd = request.getRequestDispatcher("listBlogs.jsp");
 				rd.forward(request, response);
 				}
 			
@@ -70,7 +70,7 @@ public class Controller extends HttpServlet {
 			List<Blog> Blogs = new ArrayList<Blog>();
 			Blogs = subjectService.deleteBlog(subjectId);
 			request.setAttribute("subjects", Blogs);
-			rd = request.getRequestDispatcher("listSubjects.jsp");
+			rd = request.getRequestDispatcher("ListBlogs.jsp");
 			rd.forward(request, response);
 			}
 		}
