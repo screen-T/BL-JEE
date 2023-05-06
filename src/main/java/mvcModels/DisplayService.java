@@ -24,14 +24,14 @@ public class DisplayService {
     public DisplayService() {
         // TODO Auto-generated constructor stub
     }
-    @PersistenceContext(unitName="tp4jee")
+    @PersistenceContext(unitName="bloggyV4")
     private EntityManager em;
     public List<Blog> getAllBlogs()
     {
-    List<Blog> subjects = new ArrayList<Blog>();
-    TypedQuery<Blog> query = em.createNamedQuery("blog.findAll",Blog.class);
-    subjects = query.getResultList();
-    return subjects;
+    List<Blog> blogs = new ArrayList<Blog>();
+    TypedQuery<Blog> query = em.createNamedQuery("Blog.findAll",Blog.class);
+    blogs = query.getResultList();
+    return blogs;
     }
     
     public List<Blog> deleteBlog(int id)

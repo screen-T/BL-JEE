@@ -25,7 +25,7 @@ import mvcModels.DisplayService;
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@EJB
-	private DisplayService subjectService;
+	private DisplayService service;
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -45,21 +45,23 @@ public class Controller extends HttpServlet {
 		
 		String action = request.getParameter("action");
 		RequestDispatcher rd ;
+		if(action==null)
+		{
+			List<Blog> listBlogs = service.getAllBlogs();
+			System.out.println(listBlogs.size());
+			request.setAttribute("Blogs", listBlogs);
+			rd = request.getRequestDispatcher("home.jsp");
+			rd.forward(request, response);
+		}
 		if(action.contentEquals("addBlog"))
 		{
 			
+			rd = request.getRequestDispatcher("insertblog.jsp");
+			rd.forward(request, response);
 			
 		}
-		if(action.contentEquals("ViewBlog"))
-		{
-			{
-				List<Blog> Blogs = new ArrayList<Blog>();
-				Blogs = subjectService.getAllBlogs();
-				request.setAttribute("Blogs", Blogs);
-				rd = request.getRequestDispatcher("listBlogs.jsp");
-				rd.forward(request, response);
-				}
-			
+		if (action != null && action.equals("addBlog")) {
+		    response.sendRedirect("insertblog.jsp");
 		}
 		if(action.contentEquals("deleteSubject"))
 		{
@@ -68,7 +70,7 @@ public class Controller extends HttpServlet {
 			{
 			int subjectId = Integer.parseInt(subId);
 			List<Blog> Blogs = new ArrayList<Blog>();
-			Blogs = subjectService.deleteBlog(subjectId);
+			Blogs = service.deleteBlog(subjectId);
 			request.setAttribute("subjects", Blogs);
 			rd = request.getRequestDispatcher("ListBlogs.jsp");
 			rd.forward(request, response);

@@ -35,7 +35,7 @@
 				</tr>
 				<tr>
 					<td> </td>
-					<td> <input name="action" value="AjouterMatiere" type="submit"> </td>
+					<td>  </td>
 				</tr>
 			</table>
 			
