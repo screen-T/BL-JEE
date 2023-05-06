@@ -1,6 +1,7 @@
 package mvcController;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entities.Blog;
+import entities.User;
 import mvcModels.DisplayService;
 
 
@@ -82,9 +84,27 @@ public class Controller extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+       String action = request.getParameter("action");
+        if(action.contentEquals("saveBlog"))
+        {
+            Blog blog = new Blog();
+            blog.setBlogName(request.getParameter("title"));
+            blog.setCategory(request.getParameter("category"));
+            blog.setDatePost(new Date(2002-01-01));
+            blog.setDescription(request.getParameter("description"));
+            blog.setImagePath(request.getParameter("imagePath"));
+            blog.setNbLike(0);
+            blog.setShortDescrption(request.getParameter("shortDescription"));
+            User user = new User();
+            user.setCin("1");
+            blog.setImagePath(request.getParameter("img")) ;
+            blog.setUser(user);
+            service.addBlog(blog);
+            response.sendRedirect("Controller");
+        }
+    }
 
-}
+
+    }
+

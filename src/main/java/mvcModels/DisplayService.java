@@ -17,7 +17,7 @@ import entities.Blog;
 @Stateless
 @LocalBean
 public class DisplayService {
-
+	  
     /**
      * Default constructor. 
      */
@@ -26,23 +26,33 @@ public class DisplayService {
     }
     @PersistenceContext(unitName="bloggyV4")
     private EntityManager em;
+    
     public List<Blog> getAllBlogs()
     {
-    List<Blog> blogs = new ArrayList<Blog>();
-    TypedQuery<Blog> query = em.createNamedQuery("Blog.findAll",Blog.class);
-    blogs = query.getResultList();
-    return blogs;
+        List<Blog> blogs = new ArrayList<Blog>();
+        TypedQuery<Blog> query = em.createNamedQuery("Blog.findAll",Blog.class);
+        blogs = query.getResultList();
+        return blogs;
     }
     
     public List<Blog> deleteBlog(int id)
     {
-    List<Blog> subjects = new ArrayList<Blog>();
-    Blog sub = em.find(Blog.class,id);
-    if(sub!=null)
-    em.remove(sub);
-    TypedQuery<Blog> query =
-    em.createNamedQuery("Subject.findAll",Blog.class);
-    subjects = query.getResultList();
-    return subjects;
-}
+        List<Blog> blogs = new ArrayList<Blog>();
+        Blog blog = em.find(Blog.class,id);
+        if(blog != null) {
+            em.remove(blog);
+        }
+        TypedQuery<Blog> query = em.createNamedQuery("Blog.findAll",Blog.class);
+        blogs = query.getResultList();
+        return blogs;
+    }
+    
+    public void addBlog(Blog blog) {
+        try {
+            em.persist(blog);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    } 
+
 }

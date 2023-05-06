@@ -11,6 +11,8 @@ import java.util.Date;
  */
 @Entity
 @NamedQuery(name="Blog.findAll", query="SELECT b FROM Blog b")
+
+
 public class Blog implements Serializable {
 	private static final long serialVersionUID = 1L;
 
