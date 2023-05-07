@@ -19,15 +19,15 @@
           <a class="nav-element" href="/myblogs">My blogs</a>
         </li>
    
-      <li class=" ">
-        <a class="nav-element" href="/aboutus">About us </a>
-      </li>
+      
       <li class=" ">
         <a class="btn btn-color animate__animated animate__zoomIn" href="insertblog.jsp" >addBlog</a>
           
-       
-   
-
+       </li>
+   		<li class=" ">
+        <p class="nav-element">Welcome ${sessionScope.user.username}!</p>
+      </li>
+<li>
         <a class="nav-element">logout</a>
       </li>
 

@@ -114,7 +114,7 @@ h2 {
   transition: 1s;
   margin-top: 70px;
 }
-#login_button button {
+#login_button input {
   position: absolute;
   width: 100%;
   height: 100%;

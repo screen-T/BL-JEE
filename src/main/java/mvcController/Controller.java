@@ -12,10 +12,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import entities.Blog;
 import entities.User;
 import mvcModels.DisplayService;
+import mvcModels.UserService;
 
 
 
@@ -113,8 +115,24 @@ public class Controller extends HttpServlet {
             service.Register(user);
             response.sendRedirect("Controller");
         }
-    }
+        if (action.equals("login")) {
+            String cin = request.getParameter("cin");
+            String password = request.getParameter("password");
+            
+           
+            User user = service.login(cin) ;
+            
+            if (user != null) {
+            	  HttpSession session = request.getSession(true);
+            	  session.setAttribute("user", user);
+            	  System.out.println(user);
+            	  String username = user.getUsername();
+            	  request.setAttribute("username", username);
+            	  response.sendRedirect("Controller");
+            	} else {
+            	  response.sendRedirect("login.jsp?error=Invalid username or password");
+            	}
 
-
-    }
+        }
+    }}
 

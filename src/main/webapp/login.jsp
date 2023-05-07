@@ -15,6 +15,7 @@
     <div class="row">
       <div class="login_form">
         <h2>Login</h2>
+        <form method="post" action="Controller">
         <div class="input_group">
           <i class="fa fa-user"></i>
           <input
@@ -40,11 +41,11 @@
             />
           </svg>
           <input
-            type="email"
+            type="text"
             required
-            placeholder="mail"
+            placeholder="cin"
             class="input_text"
-            name="password"
+            name="cin"
             autocomplete="off"
       
           />
@@ -55,7 +56,7 @@
           <input
             type="password"
             required
-            placeholder="Password"
+            placeholder="password"
             class="input_text"
             name="password"
             autocomplete="off"
@@ -65,12 +66,13 @@
 
 
         <div class="button_group" id="login_button">
-          <button  type="submit">register</button>
+          	<input type="submit" name="action" value="login">			
         </div>
         <div class="fotter">
           <p>don't have an account?</p>
           <a href="/createaccount">SingUp</a>
         </div>
+        </form>
       </div>
     </div>
   </div>
