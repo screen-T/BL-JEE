@@ -69,13 +69,14 @@ public class DisplayService {
                
             }
     }
-        public User login(String cin) {
-            if (cin == null ) {
+        public User login(String cin , String password) {
+            if (cin == null || password == null  )  {
                 return null;
             }
             List<User> users = em.createQuery(
-                    "SELECT u FROM User u WHERE u.cin = :cin", User.class)
+                    "SELECT u FROM User u WHERE u.cin = :cin and u.password = :password", User.class)
                     .setParameter("cin", cin)
+                    .setParameter("password", password)
                     .getResultList();
             if (users.isEmpty()) {
                 return null;
@@ -84,20 +85,6 @@ public class DisplayService {
             return users.get(0);
             
         }
-        public void displayDashboard(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            
-            HttpSession session = request.getSession(false);
-            
-            if (session == null || session.getAttribute("user") == null) {
-              response.sendRedirect("login.jsp");
-              return;
-            }
-            
-            User user = (User) session.getAttribute("user");
-            
-            // TODO: Display dashboard information for the logged-in user
-            
-            request.getRequestDispatcher("dashboard.jsp").forward(request, response);
-          }
+      
         }
 

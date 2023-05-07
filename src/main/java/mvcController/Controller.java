@@ -120,7 +120,7 @@ public class Controller extends HttpServlet {
             String password = request.getParameter("password");
             
            
-            User user = service.login(cin) ;
+            User user = service.login(cin , password) ;
             
             if (user != null) {
             	  HttpSession session = request.getSession(true);
@@ -133,6 +133,11 @@ public class Controller extends HttpServlet {
             	  response.sendRedirect("login.jsp?error=Invalid username or password");
             	}
 
+        }
+        if (action.equals("logout")) {
+        	HttpSession session = request.getSession(true);
+        	 session.invalidate();
+        	 response.sendRedirect("Controller");
         }
     }}
 
