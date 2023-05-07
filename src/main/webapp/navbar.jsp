@@ -9,12 +9,10 @@
 <body>
 <div class="d-none d-lg-block">
   <nav class="navbar sticky-top navbar-color">
-    <a class="" href="/">
-      <img src="logo.logo_path" alt=""  class="logo_size_adjust" />
-    </a>
+      <img src="./assets/logo.png" alt=""  class="logo_size_adjust" />
     <ul class="">
       <li class="">
-        <a class="nav-element" href="/">Home </a>
+        <a class="nav-element" href="/Controller">Home </a>
       </li>
      
         <li class=" ">
@@ -24,13 +22,8 @@
       <li class=" ">
         <a class="nav-element" href="/aboutus">About us </a>
       </li>
-
-   
-
-  
       <li class=" ">
-       
-        <input class="btn btn-color animate__animated animate__zoomIn" name="action" value="addBlog" type="submit">
+        <a class="btn btn-color animate__animated animate__zoomIn" href="insertblog.jsp" >addBlog</a>
           
        
    
@@ -40,7 +33,7 @@
 
 
       <li>
-        <a class="nav-element" href="/createaccount">
+        <a class="nav-element" href="createaccount.jsp">
           sign in / log in
         </a>
       </li>

@@ -103,6 +103,16 @@ public class Controller extends HttpServlet {
             service.addBlog(blog);
             response.sendRedirect("Controller");
         }
+        if(action.contentEquals("register"))
+        {
+            User user = new User();
+            user.setAge(new Date(2002-10-10)) ;
+            user.setCin(request.getParameter("cin")) ;
+            user.setPassword(request.getParameter("password")) ;
+            user.setUsername(request.getParameter("username"));
+            service.Register(user);
+            response.sendRedirect("Controller");
+        }
     }
 
 

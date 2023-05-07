@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import entities.Blog;
+import entities.User;
 
 /**
  * Session Bean implementation class DisplayService
@@ -53,6 +54,15 @@ public class DisplayService {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    } 
+       
+    }
+        public void Register(User user) {
+            try {
+                em.persist(user);
+            } catch (Exception e) {
+                e.printStackTrace();
+               
+            }
+    }
 
 }

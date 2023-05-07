@@ -7,7 +7,7 @@ import java.util.Date;
 
 /**
  * The persistent class for the blog database table.
- * 
+
  */
 @Entity
 @NamedQuery(name="Blog.findAll", query="SELECT b FROM Blog b")
