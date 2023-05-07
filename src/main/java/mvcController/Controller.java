@@ -88,8 +88,12 @@ public class Controller extends HttpServlet {
 	 */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        String action = request.getParameter("action");
+       String Cin="" ;
+       HttpSession session = request.getSession(true);
         if(action.contentEquals("saveBlog"))
-        {
+        {	
+        	
+        	
             Blog blog = new Blog();
             blog.setBlogName(request.getParameter("title"));
             blog.setCategory(request.getParameter("category"));
@@ -98,12 +102,17 @@ public class Controller extends HttpServlet {
             blog.setImagePath(request.getParameter("imagePath"));
             blog.setNbLike(0);
             blog.setShortDescrption(request.getParameter("shortDescription"));
-            User user = new User();
-            user.setCin("1");
+            User user = (User) session.getAttribute("user");
+            if (user != null) {
+                // set the user's cin on the blog
+                blog.setUser(user);
+            }
             blog.setImagePath(request.getParameter("img")) ;
-            blog.setUser(user);
+            
             service.addBlog(blog);
             response.sendRedirect("Controller");
+            System.out.printf("aaa");
+            
         }
         if(action.contentEquals("register"))
         {
@@ -118,13 +127,14 @@ public class Controller extends HttpServlet {
         if (action.equals("login")) {
             String cin = request.getParameter("cin");
             String password = request.getParameter("password");
-            
+            Cin=cin ; 
            
             User user = service.login(cin , password) ;
             
             if (user != null) {
-            	  HttpSession session = request.getSession(true);
+            	  
             	  session.setAttribute("user", user);
+            	  
             	  System.out.println(user);
             	  String username = user.getUsername();
             	  request.setAttribute("username", username);
@@ -135,7 +145,7 @@ public class Controller extends HttpServlet {
 
         }
         if (action.equals("logout")) {
-        	HttpSession session = request.getSession(true);
+        	
         	 session.invalidate();
         	 response.sendRedirect("Controller");
         }

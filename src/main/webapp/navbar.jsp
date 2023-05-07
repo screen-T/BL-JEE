@@ -15,7 +15,7 @@
         </li>  
         <li class=" ">
           <c:if test="${sessionScope.user != null}">
-            <p class="nav-element">${sessionScope.user.username}</p>
+            <p class="nav-element">${sessionScope.user.username} ${sessionScope.user.cin}</p>
           </c:if>
         </li>
         <li>

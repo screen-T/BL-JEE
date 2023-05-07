@@ -19,6 +19,7 @@
           <img class="card-img-top" src="${blog.imagePath}" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">${blog.blogName}</h5>
+             uploaded by: <h6 class="card-title">${blog.user.username}</h6>
             <p class="card-text">${blog.shortDescrption}</p>
             <a href="#" class="btn btn-primary">Go somewhere</a>
           </div>
