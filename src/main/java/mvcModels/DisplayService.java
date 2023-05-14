@@ -69,6 +69,30 @@ public class DisplayService {
                
             }
     }
+        
+        public User getUserByUsername(String cin) {
+            List<User> users = em.createQuery(
+                    "SELECT u FROM User u WHERE u.cin = :cin", User.class)
+                    .setParameter("cin", cin)
+                    .getResultList();
+            if (users.isEmpty()) {
+                return null;
+            }
+            return users.get(0);
+        }
+        public boolean register(User user) {
+            if (user == null) {
+                return false;
+            }
+            if (getUserByUsername(user.getCin()) != null) {
+                return false;
+            }
+            em.persist(user);
+            return true;
+        }
+        
+        
+        
         public User login(String cin , String password) {
             if (cin == null || password == null  )  {
                 return null;
@@ -85,6 +109,18 @@ public class DisplayService {
             return users.get(0);
             
         }
+        public void updateBlog(Blog blog) {
+            try {
+                em.merge(blog);
+            } catch (Exception e) {
+                e.printStackTrace();
+                // Handle any exceptions or errors that occur during the update process
+            }
+        }
+        public Blog getBlogById(int id) {
+            return em.find(Blog.class, id);
+        }
+
       
         }
 

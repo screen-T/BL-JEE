@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel="icon" type="image/x-icon" href="./favicon.ico">
 <link href="navbar.css" rel="stylesheet">
-<link href="home.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 <body>
   <div class="d-none d-lg-block">
@@ -14,8 +14,17 @@
           <a class="nav-element" href="Controller">Home </a>
         </li>  
         <li class=" ">
+         <c:if test="${sessionScope.user != null}">
+          <form method="get" action="Controller">
+   			<a href="myblogs.jsp">	<input class="btn nav-element"  type="submit" name="action" value="myBlogs">
+  			</a>
+  			</form>
+            
+          </c:if>
+        </li>
+        <li class=" ">
           <c:if test="${sessionScope.user != null}">
-            <p class="nav-element">${sessionScope.user.username} ${sessionScope.user.cin}</p>
+            <a href="profile.jsp"> <p class="nav-element">${sessionScope.user.username} </p> </a>
           </c:if>
         </li>
         <li>

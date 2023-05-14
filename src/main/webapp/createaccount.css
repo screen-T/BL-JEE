@@ -105,19 +105,19 @@ h2 {
 }
 .input_text:hover {
   border-bottom: 1px solid #bf00ff;
-  border-radius: 20px;
+  
 }
 .input_text:focus {
   border-bottom: 1px solid #bf00ff;
-  border-radius: 20px;
+  
 }
 .input_text:hover {
   border-bottom: 1px solid #bf00ff;
-  border-radius: 20px;
+  
 }
 .input_text:focus {
   border-bottom: 1px solid #bf00ff;
-  border-radius: 20px;
+
 }
 ::placeholder {
   font-size: 15px;
@@ -189,4 +189,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   bottom: 0;
   left: 0;
   position: static;
+  
+ 
+}
+#c{
+	position: relative;
+  bottom: 5px;
 }

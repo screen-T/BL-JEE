@@ -41,10 +41,10 @@ public class UserService {
         
     }
 
-    public User getUserByUsername(String username) {
+    public User getUserByUsername(String cin) {
         List<User> users = entityManager.createQuery(
-                "SELECT u FROM User u WHERE u.username = :username", User.class)
-                .setParameter("username", username)
+                "SELECT u FROM User u WHERE u.cin = :cin", User.class)
+                .setParameter("cin", cin)
                 .getResultList();
         if (users.isEmpty()) {
             return null;
